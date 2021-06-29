@@ -1,6 +1,6 @@
 package generics;
 
-//generics class and extends Comparable method for it
+//generics class and extends Coparable method for it
 public class GenericsMaxFinder <T extends Comparable>{
     //generics Array
 	private T[] inputArray;
@@ -11,15 +11,20 @@ public class GenericsMaxFinder <T extends Comparable>{
     }
 
     //method to find max of array of any data type
-    private static <T extends Comparable> void getMaximum(T[] array){
+    private static <T extends Comparable> void getMax(T[] array){
         T max = array[0];
         for (int i=0;i<array.length; i++){
             if (array[i].compareTo(max)>0){
                 max=array[i];
             }
         }
-        System.out.println("Maximum : "+max);
+        GenericsMaxFinder.printMax(max);
 
+    }
+    
+    //Extend the max method to print max 
+    private static<T> void printMax(T max) {
+        System.out.println("Maximum : "+max);
     }
     
     //main method
@@ -30,12 +35,12 @@ public class GenericsMaxFinder <T extends Comparable>{
         String[] stringArray={"a","abc","abcgss","abcde"};
         
         System.out.println("maximum of integer [10,9,8,7,6,5,56] values are");
-        GenericsMaxFinder.getMaximum(intArray);
+        GenericsMaxFinder.getMax(intArray);
         
-        System.out.println("maximum of integer [3.3,6.67,4.56,89.43] values are");
-        GenericsMaxFinder.getMaximum(doubleArray);
+        System.out.println("maximum of Float [3.3,6.67,4.56,89.43] values are");
+        GenericsMaxFinder.getMax(doubleArray);
         
-        System.out.println("maximum of integer [ a,abc,abcgss,abcde ] values are");
-        GenericsMaxFinder.getMaximum(stringArray);
+        System.out.println("maximum of String [ a,abc,abcgss,abcde ] values are");
+        GenericsMaxFinder.getMax(stringArray);
     }
 }
