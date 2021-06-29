@@ -1,38 +1,41 @@
 package generics;
 
-public class  GenericsMaxFinder <T extends Comparable<T>> {
+//generics class and extends Comparable method for it
+public class GenericsMaxFinder <T extends Comparable>{
+    //generics Array
+	private T[] inputArray;
 
-	T num1;
-	T num2;
-	T num3;
 	//constructor
-    public GenericsMaxFinder(T num1, T num2, T num3) {
-		super();
-		this.num1 = num1;
-		this.num2 = num2;
-		this.num3 = num3;
-	}
-
-
-    public T GenericMax() {
-    	return GenericsMaxFinder.GenericMax(num1, num2, num3);
+    public GenericsMaxFinder(T[] inputArray) {
+        this.inputArray=inputArray;
     }
 
-    // Generic method to find max of any numbers
-    public static <T extends Comparable<T>> T GenericMax(T num1, T num2, T num3) {
-        T max = num1;
-        if (num2.compareTo(max) > 0)
-            max = num2;
-        if (num3.compareTo(max) > 0)
-            max = num3;
-        return max;
-    }
+    //method to find max of array of any data type
+    private static <T extends Comparable> void getMaximum(T[] array){
+        T max = array[0];
+        for (int i=0;i<array.length; i++){
+            if (array[i].compareTo(max)>0){
+                max=array[i];
+            }
+        }
+        System.out.println("Maximum : "+max);
 
-	// Main method
+    }
+    
+    //main method
     public static void main(String[] args) {
-    	  System.out.println("Maximum Integer by creating Generic class :" + new GenericsMaxFinder(3, 6, 2).GenericMax());
-    	  System.out.println("Maximum Float by creating Generic class :" + new GenericsMaxFinder(3.5f, 6.56f, 3.45f).GenericMax());
-    	  System.out.println("Maximum Float by creating Generic class :" + new GenericsMaxFinder("abc","abcd","abcde").GenericMax());
+        // Declaring array of  INTEGER,FLOAT,STRING
+    	Integer[] intArray={10,9,8,7,6,5,56};
+        Double[] doubleArray={3.3,6.67,4.56,89.43};
+        String[] stringArray={"a","abc","abcgss","abcde"};
+        
+        System.out.println("maximum of integer [10,9,8,7,6,5,56] values are");
+        GenericsMaxFinder.getMaximum(intArray);
+        
+        System.out.println("maximum of integer [3.3,6.67,4.56,89.43] values are");
+        GenericsMaxFinder.getMaximum(doubleArray);
+        
+        System.out.println("maximum of integer [ a,abc,abcgss,abcde ] values are");
+        GenericsMaxFinder.getMaximum(stringArray);
     }
-
 }
